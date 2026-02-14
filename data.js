@@ -1,40 +1,20 @@
-const container = document.getElementById("templateContainer");
-const searchInput = document.getElementById("searchInput");
-const categoryFilter = document.getElementById("categoryFilter");
-
-function renderTemplates(data){
-container.innerHTML="";
-data.forEach(t=>{
-let card=document.createElement("div");
-card.className="card";
-card.innerHTML=`
-<h3>${t.category} - ${t.sub}</h3>
-<p>${t.text}</p>
-<button onclick="copyText('${t.text}')">Copy</button>
-<button onclick="saveFavorite(${t.id})">Save</button>
-`;
-container.appendChild(card);
-});
+let templates = [
+{
+id:1,
+category:"Sales",
+sub:"Closing",
+text:"Hi, I completely understand your hesitation. Many of our clients felt the same before they saw the real results. Let me explain exactly how this can help you achieve your goal quickly and safely."
+},
+{
+id:2,
+category:"WhatsApp",
+sub:"Follow Up",
+text:"Hello again! Just wanted to follow up regarding our previous conversation. I truly believe this can bring real value to your business."
+},
+{
+id:3,
+category:"Objections",
+sub:"Price",
+text:"I understand price is important. What most clients discover is that investing now actually saves them more money in the long term."
 }
-
-function copyText(text){
-navigator.clipboard.writeText(text);
-alert("Copied!");
-}
-
-function saveFavorite(id){
-let favs=JSON.parse(localStorage.getItem("favorites"))||[];
-if(!favs.includes(id)){
-favs.push(id);
-localStorage.setItem("favorites",JSON.stringify(favs));
-alert("Saved!");
-}
-}
-
-searchInput.addEventListener("input",()=>{
-let value=searchInput.value.toLowerCase();
-let filtered=templates.filter(t=>t.text.toLowerCase().includes(value));
-renderTemplates(filtered);
-});
-
-renderTemplates(templates);
+];
