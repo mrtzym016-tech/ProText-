@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+</head>
+<body>
+
+<h2>Admin Login</h2>
+<input type="password" id="pass">
+<button onclick="login()">Enter</button>
+
+<div id="panel" style="display:none;">
+<h3>Add Template</h3>
+<input id="cat" placeholder="Category">
+<input id="sub" placeholder="Sub Category">
+<textarea id="text"></textarea>
+<button onclick="addTemplate()">Add</button>
+<button onclick="exportData()">Export JSON</button>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
